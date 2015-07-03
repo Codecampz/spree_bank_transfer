@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version     = '2.3.0'
   s.summary     = 'Spree extension to create bank transfer payment method.'
   s.description = 'This Spree extension allows admin to provide bank transfer payment method to its users.'
-  s.required_ruby_version = '>= 1.9.3'
+  s.required_ruby_version = '>= 2.0.0'
 
   s.author    = 'Mohit Bansal'
   s.email     = 'info@vinsol.com'
@@ -16,6 +16,6 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 2.3.0'
+  s.add_dependency 'spree_core' #, '3-0-stable'
 
 end
