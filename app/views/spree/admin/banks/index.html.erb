@@ -1,18 +1,14 @@
-<%= render :partial => 'spree/admin/shared/configuration_menu' %>
-
 <% content_for :page_title do %>
   <%= Spree.t(:listing_banks) %>
 <% end %>
 
 <% content_for :page_actions do %>
-  <li>
-    <%= button_link_to Spree.t(:new_bank), new_admin_bank_path %>
-  </li>
+  <%= button_link_to Spree.t(:new_bank), new_admin_bank_path, class: 'btn-success', icon: 'add', id: 'add_new_bank' %>
 <% end %>
 
 <%= paginate @banks %>
 
-<table class='index'>
+<table class='index table' data-hook>
   <thead>
     <tr>
       <th><%= Spree.t(:bank_name) %></th>
