@@ -4,31 +4,33 @@
     <%= link_to Spree.t(:add_details), "javascript:void(0);", :class => 'btn btn-success btn-xs add_bt_details' %>
   <% end %>
 
-  <%= form_for bank_transfer_payment, :html => { :class => "bt_payment_form #{bank_transfer_payment.details_submitted? ? '' : 'hidden'}" } do |f| %>
-    <div class="form-group">
-      <%= f.label :deposited_on, raw(Spree.t(:deposited_on) + content_tag(:span, ' *', class: 'required')), class: 'control-label' %>
-      <%= f.text_field :deposited_on, class: 'form-control', 'field-name' => 'Deposited on' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :bank_name, raw(Spree.t(:bank_name) + content_tag(:span, ' *', class: 'required')), class: 'control-label' %>
-      <%= f.text_field :bank_name, class: 'form-control', 'field-name' => 'Bank name' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :account_no, raw(Spree.t(:account_no) + content_tag(:span, ' *', class: 'required')), class: 'control-label' %>
-      <%= f.text_field :account_no, class: 'form-control', 'field-name' => 'Account No.' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :transaction_reference_no, raw(Spree.t(:transaction_reference_no) + content_tag(:span, ' *', class: 'required')), class: 'control-label' %>
-      <%= f.text_field :transaction_reference_no, class: 'form-control', 'field-name' => 'Transaction Reference No.', :disabled => bank_transfer_payment.details_submitted? %>
-    </div>
-
-    <% unless bank_transfer_payment.details_submitted? %>
+  <%= form_for bank_transfer_payment do |f| %>
+    <div class="bt_payment_form <%= bank_transfer_payment.details_submitted? ? '' : 'hide' %>">
       <div class="form-group">
-        <%= f.submit "Submit", :confirm => Spree.t(:confirm_details_submit), class: 'btn btn-primary btn-sm'  %>
+        <%= f.label :deposited_on, raw(Spree.t(:deposited_on) + content_tag(:span, ' *', class: 'required')), class: 'control-label' %>
+        <%= f.text_field :deposited_on, class: 'form-control', 'field-name' => 'Deposited on' %>
       </div>
-    <% end %>
+
+      <div class="form-group">
+        <%= f.label :bank_name, raw(Spree.t(:bank_name) + content_tag(:span, ' *', class: 'required')), class: 'control-label' %>
+        <%= f.text_field :bank_name, class: 'form-control', 'field-name' => 'Bank name' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :account_no, raw(Spree.t(:account_no) + content_tag(:span, ' *', class: 'required')), class: 'control-label' %>
+        <%= f.text_field :account_no, class: 'form-control', 'field-name' => 'Account No.' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :transaction_reference_no, raw(Spree.t(:transaction_reference_no) + content_tag(:span, ' *', class: 'required')), class: 'control-label' %>
+        <%= f.text_field :transaction_reference_no, class: 'form-control', 'field-name' => 'Transaction Reference No.', :disabled => bank_transfer_payment.details_submitted? %>
+      </div>
+
+      <% unless bank_transfer_payment.details_submitted? %>
+        <div class="form-group">
+          <%= f.submit "Submit", :confirm => Spree.t(:confirm_details_submit), class: 'btn btn-primary btn-sm'  %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 <% end %>
